@@ -34,7 +34,7 @@ The Cube is a digital marketing agency that provides innovative solutions for bu
 ### Links
 
 - Solution URL: [https://github.com/fatima-xs/the-cube-agency](https://github.com/fatima-xs/lazy-life-blog)
-- Live Site URL: [https://the-cube.netlify.app/](https://lazy-life-fatima.netlify.app/)
+- Live Site URL: [https://the-cube-fatima.netlify.app/](https://lazy-life-fatima.netlify.app/)
 
 ## Built with
 
