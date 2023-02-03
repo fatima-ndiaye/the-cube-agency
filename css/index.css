@@ -1,0 +1,458 @@
+/* =================
+   Typography
+   ================= */
+:root
+{
+    /* Colors */
+    --clr-dark:0 0% 7%;
+    --clr-light:0 0% 100%;
+    --clr-accent:351 78% 50%;
+
+    /* Font Sizes */
+    --fs-h1: 3.2rem;
+    --fs-h2: 1.75rem;
+    --fs-h3: 1.05rem;
+    --fs-body: 1rem;
+
+    /* Font Weights */
+    --fw-light:200;
+    --fw-reg: 400;
+    --fw-bold: 600;
+
+    /* Font families */
+    --ff-primary:'Montserrat', sans-serif;
+    --ff-secondary:'YoungSerifRegular', serif;
+}
+@media (min-width:35em)
+{
+    :root 
+    {
+        --fs-h1: 5rem;
+        --fs-h2: 2.75rem;
+        --fs-h3: 1.25rem;
+        --fs-body: 1rem;
+    }
+}
+@media (min-width:45em)
+{
+    :root 
+    {
+        --fs-h1: 6.75rem;
+        --fs-h2: 3.5rem;
+        --fs-h3: 1.5rem;
+        --fs-body: 1.1rem;
+
+    } 
+}
+
+/* =================
+   Reset
+   ================= */
+
+/* ==== Box-sizing === */
+*,
+*::before,
+*::after 
+{
+    box-sizing: border-box;
+}
+/* === Remove default margin === */
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+picture
+{
+    margin: 0;
+}
+/* === Set default fw === */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p 
+{
+    font-weight: 400;
+}
+/* === Set up the Body === */
+body
+{
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    color: hsl( var(--clr-light) );
+    background-color: hsl( var(--clr-dark) );
+    line-height: 1.5;
+    min-height: 100vh;
+}
+/* === Remove list styles on ul === */
+ul
+{
+    list-style: none;
+}
+/* === Remove text decoration on links === */
+a
+{
+    text-decoration: none;
+}
+/* === Make images easier to work with === */
+img,
+picture
+{
+    max-width: 100%;
+    display: block;
+}
+/* === Remove animations for people who've turned them off === */
+@media (prefers-reduced-motion: reduce) 
+{
+    *,
+    *::before,
+    *::after{
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+/* =================
+   Utility classes
+   ================= */
+/* === GENERAL === */
+.flex
+{
+    display: flex;
+    gap:var(--gap, 1rem);
+}
+.flow > * + * /*---*+*==*:not(:first-child)---*/
+{
+    margin-top: var(--flow-space, 1rem);
+}
+.container
+{
+    padding-inline: 2em;
+    margin-inline: auto;
+    max-width: 80rem;
+}
+.filter
+{
+    filter: blur(0) brightness(100%);
+    transition: filter 0.5s ease-in-out;
+}
+.filtered
+{
+    filter:blur(3px) brightness(50%);  
+}
+.opacity
+{
+    opacity: 0.5;
+}
+/* === COLORS === */
+.bg-dark{background-color: hsl(var(--clr-dark));}
+.bg-accent{background-color: hsl(var(--clr-accent));}
+
+.text-light{color: hsl(var(--clr-light));}
+.text-accent{color: hsl(var(--clr-accent));}
+
+/* === TYPOGRAPHY === */
+.ff-primary { font-family: var(--ff-primary); }
+.ff-secondary { font-family: var(--ff-secondary); }
+
+.letter-spacing-1 { letter-spacing: 2px; }
+.letter-spacing-2 { letter-spacing: 1px; }
+
+.uppercase { text-transform: uppercase; }
+
+.fs-h1{font-size: var(--fs-h1);}
+.fs-h2{font-size: var(--fs-h2);}
+.fs-h3{font-size: var(--fs-h3);}
+.fs-body{font-size: var(--fs-body);}
+
+.fw-light{font-weight: var(--fw-light);}
+.fw-reg{font-weight: var(--fw-reg);}
+.fw-bold{font-weight: var(--fw-bold);}
+
+.fs-h1,
+.fs-h2,
+.fs-h3
+{
+    line-height: 1;
+}
+
+/* =================
+   LAYOUT
+   ================= */
+/* === HEADER === */
+header
+{
+    padding-top:5em ;
+    padding-bottom: 4em;
+    margin-bottom: 3em;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.nav-link 
+{
+    display: flex;
+    align-items: center;
+    transform: translateX(0);
+    transition: transform 500ms cubic-bezier(.135, .805, .305, .905) 0.1s;
+}
+.nav-link:hover,
+.nav-link:focus
+{
+    transform: translateX(5px); 
+}
+
+/* === Slideshow === */
+.slideshow-intro
+{
+    margin: 4em auto 2em;
+    padding-inline: 2em;
+    max-width: 90rem;
+    height: 20rem;
+    background-size: cover;
+    background-position: center center;
+    animation: fondu 3s ease-in-out infinite;
+    border-radius: 7px;
+}
+@media (min-width:45rem) 
+{
+    .slideshow-intro
+    {
+        margin: 8em auto 5em;
+        padding-inline: 2em;
+        max-width: 90rem;
+        height: 40rem;       
+    }
+}
+@keyframes fondu
+{
+    0%{background-image: url("../assets/img1.jpg");}
+	16.66%{background-image: url("../assets/img2.jpg");}
+	33.33%{background-image: url("../assets/img3.jpg");}
+	49.98%{background-image: url("../assets/img4.jpg");}
+	66.64%{background-image: url("../assets/img5.jpg");}
+	83.3%{background-image: url("../assets/img6.jpg");}
+	100%{background-image: url("../assets/img7.jpg");}
+}
+/* === Text presentation section === */
+.text-presentation
+{
+    margin-bottom: 4em;
+    padding-bottom: 4em;
+    border-bottom: 1px solid hsla(0, 0%, 94.1%, .1);
+}
+.text-presentation p:first-child
+{
+    margin-bottom: 0.5em;
+    line-height:1.2;
+}
+.text-presentation p:last-child
+{
+    line-height: 1.4;
+}
+/* === Clients === */
+.clients 
+{
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: baseline;
+    --gap:0;
+    border-bottom: 1px solid hsla(0, 0%, 94.1%, .1);
+    padding-bottom: 4em;
+    margin-bottom: 4em;
+}
+.clients ul
+{
+    padding: 0;
+}
+.clients ul li
+{
+    line-height: 2.3;
+}
+.client-lists
+{
+    justify-content: center;
+    --gap:3rem;
+}
+@media (min-width:35rem) {
+    .clients
+    {
+        flex-direction: row;
+        align-items: baseline;
+        
+    }
+    
+}
+/* === Footer === */
+footer
+{
+    flex-direction: column;
+    padding-bottom: 1em;
+    align-items: flex-start;
+}
+.social-list
+{
+    padding: 0;
+}
+.social-link
+{
+    font-size: 1.875rem;
+    cursor: pointer;
+}
+.social-link:hover,
+.social-link:focus
+{
+    opacity: 0.5;
+}
+.mail
+{
+    cursor: pointer;
+}
+@media (min-width:45rem) 
+{
+    footer 
+    {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    
+}
+
+/* =================
+   Work Page
+   ================= */
+.main-content
+{
+    padding-top:4em;
+    --flow-space:3rem;
+    height: 85vh;
+}
+.main-content h2 
+{
+    margin-bottom: 0.5rem;  
+}
+.slideshow-container
+{
+    position: relative;
+    cursor: grab;
+    overflow: hidden;
+    height: 80%;
+}
+@media (min-width:35rem) 
+{
+  .main-content
+  {
+    height: 85vh;
+  }
+  .slideshow-container
+  {
+    height: 70%;
+  }
+  
+}
+.slideshow-container:active
+{
+    cursor: grabbing;
+}
+.slideshow
+{
+    height: 100%;
+    display: flex;
+    pointer-events: none;
+    position: absolute;
+
+}
+.slide
+{
+    flex-shrink: 0;
+    height: 100%;
+    width: 70vmin;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.slide:not(:nth-child(1))
+{
+  margin-left: 10px;
+}
+.slide h2,
+.slide a 
+{
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.slide h2
+{
+    position: absolute;
+    top: clamp(10px, 2vw, 20px);
+    left: clamp(10px, 2vw, 20px);
+    font-size: clamp(20px, 3vw 40px);
+    font-weight: 300;
+}
+.slide a 
+{
+    position: absolute;
+    bottom: clamp(10px, 2vw, 20px);
+    right: clamp(10px, 2vw, 20px);
+    font-size: clamp(16px, 3vw 20px);
+    font-weight: 300;
+    color: #fff;
+    pointer-events: auto;
+    text-decoration: none;
+
+}
+.s1 
+{
+  background-image: url("../assets/pepsi.jpg");
+}
+
+.s2 
+{
+  background-image: url("../assets/nike.jpg");
+}
+
+.s3 
+{
+  background-image: url("../assets/img4.jpg");
+}
+
+.s4 
+{
+  background-image: url("../assets/microsoft.jpeg");
+}
+
+.s5 
+{
+  background-image: url("../assets/resort.jpeg");
+}
+.overlay
+{
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+
+}
+footer
+{
+    margin-top: 1em;
+    display: flex;
+}
+.footer-nav-link
+{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 500ms cubic-bezier(.135, .805, .305, .905) 0.1s;
+}
+.footer-nav-link:hover,
+.footer-nav-link:focus {
+  transform: translateX(-5px);
+}

@@ -1,0 +1,48 @@
+
+.cube 
+{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 10000px;
+    transform: rotateX(-36deg) rotateY(-45deg);
+    animation: spin 7s infinite cubic-bezier(0.16, 0.61, 0.49, 0.91);
+}
+
+@keyframes spin {
+    33% {
+        transform: rotateX(-36deg) rotateY(-405deg);
+    }
+
+    100% {
+        transform: rotateX(-36deg) rotateY(-405deg);
+    }
+}
+
+.face 
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*background: hsl(var(--clr-dark));*/
+    border: 12.5px solid hsl(var(--clr-light));
+    box-shadow: 0 0 12px hsl(var(--clr-accent));
+}
+.face:hover
+{
+    box-shadow: 0 0 15px hsl(var(--clr-light))
+}
+
+.top {transform: rotateX(90deg) translateZ(12.5px);}
+
+.bottom {transform: rotateX(-90deg) translateZ(12.5px);}
+
+.right {transform: rotateY(90deg) translateZ(12.5px);}
+
+.left {transform: rotateY(-90deg) translateZ(12.5px);}
+
+.front {transform: translateZ(12.5px);}
+
+.back {transform: rotateY(-180deg) translateZ(12.5px);}
+
